@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>CliKm3ter</title>
-  
   </head>
-  <body>
-    <button>click me</button>
 
-    
+  <body>
+    <button id="alpha">click me</button>
+
+    <div id="result"> </div>
+
+    <script type="text/javascript">
+
+      var button = document.getElementById('alpha');
+
+      var result = document.getElementById('result');
+
+      var increment = 0;
+
+      var timing = 4;
+
+      var listener = function () {
+        increment = increment + 1;
+        console.log('click ' + increment);
+      };
+
+      var ending = function () {
+        button.removeEventListener('click', listener);
+        result.innerHTML = increment + ' cliques gros pgm en ' + timing + ' secondes';
+      };
+
+      button.addEventListener('click', listener);
+
+      /**
+       * setTimeout(action, timer)
+       */
+      setTimeout(ending, timing * 1000);
+
+
+    </script>
   </body>
+
+
 </html>
