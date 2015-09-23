@@ -16,27 +16,27 @@
 
       var result = document.getElementById('result');
 
-      var increment = 0;
+      var click_number = 0;
 
       var timing = 4;
 
-      var listener = function () {
-        increment = increment + 1;
-        console.log('click ' + increment);
+      var incrementClickNumber = function () {
+        click_number = click_number + 1;
+        console.log('click ' + click_number);
       };
 
       var ending = function () {
-        button.removeEventListener('click', listener);
-        result.innerHTML = increment + ' cliques gros pgm en ' + timing + ' secondes';
+        button.removeEventListener('click', incrementClickNumber);
+        result.innerHTML = click_number + ' cliques gros pgm en ' + timing + ' secondes';
       };
 
-      button.addEventListener('click', listener);
+      var onFirstClick = function () {
+        setTimeout(ending, timing * 1000);
+        button.removeEventListener('click', onFirstClick);
+      };
 
-      /**
-       * setTimeout(action, timer)
-       */
-      setTimeout(ending, timing * 1000);
-
+      button.addEventListener('click', incrementClickNumber);
+      button.addEventListener('click', onFirstClick);
 
     </script>
   </body>
